@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import json
+import os
 
 app = Flask(__name__)
 
@@ -19,4 +20,5 @@ def book_detail(book_id):
     return render_template("book_detail.html", book=book)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
